@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rocm-shims"
+version = "0.1.0"
+description = "Pure-PyTorch stand-ins (ROCm) for flash_attn, xformers, rotary_emb, dropout_layer_norm, spconv, torch_scatter and o_voxel, as used by a few 3D research models"
+requires-python = ">=3.10"
+license = "MIT"
+readme = "README.md"
+authors = [{ name = "SerraJoa" }]
+dependencies = []   # torch and numpy come from your existing ROCm install
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+py-modules = ["rotary_emb", "dropout_layer_norm"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
