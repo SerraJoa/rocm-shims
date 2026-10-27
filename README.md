@@ -28,7 +28,7 @@ The package came out of trying open "artist mesh" generators for a hobby project
 | [LATO.2](https://github.com/LoHhhha/LATO.2) (mesh + image → artist mesh) | `spconv`, `flash_attn` varlen, `torch_scatter`, `o_voxel`; weights loaded with `weights_only=True` | Runs end to end **with this package**, about 5 min per mesh. Geometry is plausible; topology is noisy, which upstream also warns about. Not compared against a CUDA run. |
 | [DeepMesh](https://github.com/zhaorw02/DeepMesh) | `flash_attn`, `xformers.ops.SwiGLU`, `rotary_emb`, `dropout_layer_norm` + `rms_norm_forward`, `force_weights_only` | Ran with an earlier copy of the same shims; not yet re-run with the package. |
 | [FastMesh](https://huggingface.co/papers/2508.19188) | `enable_transformers_flash` | Ran with an earlier copy; not yet re-run with the package. |
-| [BPT](https://github.com/Tencent-Hunyuan/bpt) | `load_safe` with deepspeed stubs | Ran with an earlier copy; not yet re-run with the package. |
+| [BPT](https://github.com/Tencent-Hunyuan/bpt) | `safe_stubs` for the pickled deepspeed objects | Runs **with this package**, about 3 min per mesh (watertight output in the latest test). |
 | [MeshAnything V2](https://github.com/buaacyw/MeshAnythingV2) | Needed its own OPT attention class with the older `transformers` it pins. `enable_transformers_flash` may not be enough there. | Not covered by the package. |
 
 Tested environment: Radeon 8060S (Strix Halo, gfx1151), ROCm 7.2, PyTorch 2.9.1, Python 3.12, Linux. Other GPUs and versions have not been tried.
